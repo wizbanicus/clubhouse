@@ -1,0 +1,74 @@
+.meths {
+	font-size: 20px;
+	opacity:1;
+}
+
+.ct-checkbox {
+	width: 50px;
+}
+
+.glyph-success {
+	color: green;
+}
+
+.bg {
+/*	background-image: url("images/acch.jpg"); 
+Removed background image adding purpple color instead
+*/
+	background-color: #2D2769;
+	margin-top: 0px;
+	padding: 50px;
+	opacity: .9;
+	background-size: cover;
+}
+
+.welcome-321 {
+ 	color: white;
+}
+
+.ct-fm {
+	margin-left: 0px;
+	margin-right: 5px;
+	margin-top: 3px;
+}
+
+.text-lightgray {
+	color: rgb(220,220,220);
+}
+
+.panel {
+	background-color: rgba(240,240,240,.9);
+
+}
+.panel-body-321 {
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+
+.panel-body-danger {
+	background-color: rgba(255,100,100,.5);	
+}
+
+.panel-dark {
+	background-color: rgba(0,0,0,.8);
+}
+
+input {
+	padding-bottom: 50px;
+}
+
+.sign-in {
+	width: 300px;
+	height: 50px;
+	font-size: 30px;
+}
+
+.view-signed-in {
+	width: 100%;
+	font-size: 30px;
+}
+
+.navbar-ch {
+	font-size:30px;
+	color: white;
+}
