@@ -54,6 +54,23 @@ DESIGN PRINCIPLES
   * Fairly Normalised database common elements added as needed (eg. suburb, ethinicity etc)
     * However each organisation is totally separate from others (no crossover).
   
+FUTURE IMPROVEMEMTS
+* better js support for chrome and safari
+* Internationalised date time formats eg. dd/mm/yyy mm/dd/yyy
+* More reports
+* Implement better password security (hash + salt)
+* Implement https
+* fix php errors (undefined vars)
+* make it more robust (needs testing)
+
+HELP!
+* implement some cool changes and push to github!
+* get in touch jimihendrixhewasgood@gmail.com
+  * to discuss how you could help work on the project
+    * need help with html,css,php,javascript
+    * all skill levels welcome!
+* test and email me with a bug or feature you think it should have
+  
 NO WARANTY OR LIABILITY
   * Free and open source offered without warranty nor accepting any liability for use!
   * Please note licences for Twitter Bootstrap and Date Range Picker.
