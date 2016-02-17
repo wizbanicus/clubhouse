@@ -15,7 +15,9 @@ REQUIREMENTS:
 php
 apache
 mysql
+bootstrap date range picker (required but included)
 twitter bootstrap (required but included)
+
 cron or some task sheduler to auto logout
 
 INSTRUCTIONS:
@@ -27,6 +29,8 @@ INSTRUCTIONS:
 * configure apache as desired 
 * access clubhouse at http://localhost/clubhouse
 * create a new staff user using the hard coded admin user
+* create a cron (or scheduled task) to run server_auto_signout.php regularly 
+  * say every hour at say 27 and 57 minutes after the hour.
 
 DESIGN PRINCIPLES
 * Easy to use
@@ -38,4 +42,5 @@ DESIGN PRINCIPLES
     * However each organisation is totally separate from others (no crossover).
   
 NO WARANTY OR LIABILITY
-  * Free and open source offered without warranty noor accepting any liability for use!
+  * Free and open source offered without warranty nor accepting any liability for use!
+  * Please note licences for Twitter Bootstrap and Date Range Picker.

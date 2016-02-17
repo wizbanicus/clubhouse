@@ -11,7 +11,7 @@ ini_set('session.gc_maxlifetime', 18000);
 session_set_cookie_params(18000);
 session_start();
 // hard coded admin user
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['username'] == 'admin' && $_POST['password'] == 'wassup') {
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['username'] == 'admin' && $_POST['password'] == 'tppanoway!') {
 	$_SESSION['user'] = "admin";
 	$_SESSION['role'] = "admin";
 } if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['username'] && $_POST['password']) {
