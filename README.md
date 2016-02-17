@@ -12,7 +12,7 @@ Members can sign up during sign in (then staff add detail later)
 Multiple locations / venues can be used each with its own timezone.
 
 TEST / EXPLORE
-* Test clubhouse at http://test.clubhouse.co.nz
+* Test clubhouse at http://test.clubhouse.nz
   * username: admin
   * password: tppanoway!
 * add new staff user and give them an organisation
@@ -42,6 +42,8 @@ INSTRUCTIONS:
 * create a new staff user using the hard coded admin user
 * create a cron (or scheduled task) to run server_auto_signout.php regularly 
   * say every hour at say 27 and 57 minutes after the hour.
+* finally add a nifty background image to css/images
+  * then reference that image in css/clubhouse.css
 
 DESIGN PRINCIPLES
 * Easy to use

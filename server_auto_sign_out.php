@@ -14,7 +14,7 @@ function get_midnight_venues($dbh) {
 	$STMrecords = $STM->fetchAll();
 	$STM = null;
 	$timeNow = date('H:i');
-	$dailyCutOff = strtotime('17:10');
+	$dailyCutOff = strtotime('23:54');
 	if ($STMrecords) {
 			foreach($STMrecords as $row) {
 			$venueTimeNowString = new_date_string($timeNow, $row['timezone'], 'H:i', 'H:i');

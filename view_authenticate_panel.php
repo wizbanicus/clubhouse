@@ -15,7 +15,7 @@
             <div class="panel-body">
               <h4 class="text-lightgray text-center">Clubhouse membership sign in<br /><br />
 								This is clubhouse, a free open source sign in system available at <a href="https://github.com/wizbanicus/clubhouse">github</a> 
-								You can test clubhhouse <a href="http://test.clubhouse.co.nz"> here</a>
+								You can test clubhhouse <a href="http://test.clubhouse.nz"> here</a>
 								Feel free to grab a copy and run it on your own server for free, or pay me to set it up for you!
 								For more info contact jimihendrixhewasgood@gmail.com Have a great day!
               </h4>
