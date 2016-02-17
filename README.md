@@ -27,6 +27,7 @@ apache
 mysql
 bootstrap date range picker (required but included)
 twitter bootstrap (required but included)
+awesomplete (required but included)
 
 cron or some task sheduler to auto logout
 

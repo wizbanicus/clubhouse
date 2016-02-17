@@ -1,6 +1,11 @@
 <div class="container">
 	<div class="row">
-		<p>Thanks to <a href="http://www.proaxiom.co.nz">proaxiom</a> for all their support!</p>
+		<div class="pull-left col-lg-6">
+			<p>Thanks to <a href="http://www.proaxiom.co.nz">proaxiom</a> for all their support!</p>
+		</div>
+		<div class="pull-right col-lg-6">
+			<p>clubhouse version: 0.1</p>
+		</div>
 	</div>
 </div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
