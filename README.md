@@ -5,11 +5,11 @@ Clubhouse is a free opensource membership and sign in system for clubs!
 Currently only fully supported on firefox
 
 FEATURES:
-Can be multitenanted (each organisation has a virtual space on a shared database)
-Sign up members and record membership information
-Accept sign in and sign out of members
-Members can sign up during sign in (then staff add detail later)
-Multiple locations / venues can be used each with its own timezone.
+* Can be multitenanted (each organisation has a virtual space on a shared database)
+* Sign up members and record membership information
+* Accept sign in and sign out of members
+* Members can sign up during sign in (then staff add detail later)
+* Multiple locations / venues can be used each with its own timezone.
 
 TEST / EXPLORE
 * Test clubhouse at http://test.clubhouse.nz
@@ -22,14 +22,13 @@ TEST / EXPLORE
     * or edit blank member to add members
 
 REQUIREMENTS:
-php
-apache
-mysql
-bootstrap date range picker (required but included)
-twitter bootstrap (required but included)
-awesomplete (required but included)
-
-cron or some task sheduler to auto logout
+* php
+* apache
+* mysql
+* bootstrap date range picker (required but included)
+* twitter bootstrap (required but included)
+* awesomplete (required but included)
+* cron or some task sheduler to auto logout
 
 INSTRUCTIONS:
 * install php, apache, mysql
