@@ -14,10 +14,10 @@
           <div class="panel panel-default panel-dark">
             <div class="panel-body">
               <h4 class="text-lightgray text-center">Clubhouse membership sign in<br /><br />
-								This is clubhouse, a free open source sign in system available at <a href="https://github.com/wizbanicus/clubhouse">github</a> 
-								You can test clubhhouse <a href="http://test.clubhouse.nz"> here</a>
-								Feel free to grab a copy and run it on your own server for free, or pay me to set it up for you!
-								For more info contact jimihendrixhewasgood@gmail.com Have a great day!
+								This is clubhouse, a free and open source sign in system available at <a href="https://github.com/wizbanicus/clubhouse"$
+                You can test clubhhouse <a href="http://test.clubhouse.nz"> here</a>
+                feel free to grab a copy and run it on your own server for free, or pay me to set it up for you.
+                For more info contact jimihendrixhewasgood@gmail.com
               </h4>
             </div>
           </div>
