@@ -11,6 +11,16 @@ Accept sign in and sign out of members
 Members can sign up during sign in (then staff add detail later)
 Multiple locations / venues can be used each with its own timezone.
 
+TEST / EXPLORE
+* Test clubhouse at http://test.clubhouse.co.nz
+  * username: admin
+  * password: tppanoway!
+* add new staff user and give them an organisation
+  * logout
+  * login as new staff
+    * start taking signins at venue (add as you go).
+    * or edit blank member to add members
+
 REQUIREMENTS:
 php
 apache
