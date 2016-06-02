@@ -11,7 +11,7 @@ switch ($_POST['report_button']) {
 	case 'go':
 		if (isset($_POST['daterange']) && $_POST['daterange']
 			&& isset($_POST['venue']) && $_POST['venue']
-			&& isset($_POST['reporttype']) && $_POST['reporttype']) {
+			&& isset($_POST['reporttype']) && $_POST['reporttype'] && $_POST['reporttype'] == 'general-attendance' ) {
 			$dates = explode(" - ",$_POST['daterange']);
 				if (isset($dates) && $dates) {
 		 			$startDate = $dates[0];
@@ -29,11 +29,28 @@ switch ($_POST['report_button']) {
 					setcookie('reportType', $_POST['reporttype']);
 				} 
 			header("Location: reports.php");
+		} else if (isset($_POST['start_age']) && $_POST['start_age']
+			&& isset($_POST['end_age']) && $_POST['end_age']
+			&& isset($_POST['as_of_date']) && $_POST['as_of_date']
+			&& isset($_POST['reporttype']) && $_POST['reporttype']) {
+
+			if (validate_date($_POST['as_of_date'])) {
+						$asOfDate = $_POST['as_of_date'] . ' 23:59:59';
+			} else { 
+						$message = "date error, try again!";
+						setcookie('message', $message);
+			}
+			setcookie('reportStartAge', $_POST['start_age']);
+			setcookie('reportEndAge', $_POST['end_age']);
+			setcookie('reportAsOfDate', $asOfDate);
+			setcookie('reportType', $_POST['reporttype']);
+			header("Location: reports.php");
 		} else {
-			$message = "parameters: daterange, venue and report type are needed!";
+			$message = "report parameters are needed!";
 			setcookie('message', $message);
 			header("Location: reports.php");
 		}
+		header("Location: reports.php");
 		break;
 }
 ?>

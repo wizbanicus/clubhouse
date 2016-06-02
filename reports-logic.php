@@ -11,7 +11,7 @@ if ($_SESSION['role'] == 'staff' && $_SESSION['mode'] == 'reports') {
 	$venues = get_venues($dbh, $_SESSION['organisation_id']);
 // report types are listed here - for each report type there must be a 
 // corresponding view file in reports folder eg. "reports/general-attendance.php"
-	$reportTypes = array ( "general-attendance", "other" );
+	$reportTypes = array ( "select...", "general-attendance", "member-info" );
 // now if we have posted to do_reports, we'll have some cookies to make reports with
 	if (isset($_COOKIE['reportStartDate']) && $_COOKIE['reportStartDate']) {
 		$reportStartDate = $_COOKIE['reportStartDate'];
@@ -22,7 +22,16 @@ if ($_SESSION['role'] == 'staff' && $_SESSION['mode'] == 'reports') {
 	}	if (isset($_COOKIE['reportVenue']) && $_COOKIE['reportVenue']) {
 		$reportVenue = $_COOKIE['reportVenue'];
 		setcookie('reportVenue', false);
-	}	if (isset($_COOKIE['reportType']) && $_COOKIE['reportType']) {
+	}  if (isset($_COOKIE['reportStartAge']) && $_COOKIE['reportEndAge']) {
+		$reportStartAge = $_COOKIE['reportStartAge'];
+		setcookie('reportStartAge', false);
+	} if (isset($_COOKIE['reportEndAge']) && $_COOKIE['reportEndAge']) {
+		$reportEndAge = $_COOKIE['reportEndAge'];
+		setcookie('reportEndAge', false);
+	} if (isset($_COOKIE['reportAsOfDate']) && $_COOKIE['reportAsOfDate']) {
+		$reportAsOfDate = $_COOKIE['reportAsOfDate'];
+		setcookie('reportAsOfDate', false);
+	} if (isset($_COOKIE['reportType']) && $_COOKIE['reportType']) {
 		$reportType = $_COOKIE['reportType'];
 		setcookie('reportType', false);
 	} 

@@ -1,6 +1,5 @@
 <?php
 include 'configPDO.php';
-include 'db.php';
 include 'data.php';
 include 'admin-logic.php';
 ?>
@@ -9,7 +8,6 @@ include 'admin-logic.php';
 <html lang="en">
 <?php include 'head.php' ?>
   <body>
-
 
 <?php include 'navbar.php' ?>
 
@@ -33,7 +31,5 @@ include 'admin-logic.php';
       <br /> <br /><br /> <br /><br /> <br /><br /> <br />  
     </div>
     <?php include 'view_footer.php'; ?>
-
-
   </body>
 </html>

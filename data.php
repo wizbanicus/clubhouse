@@ -171,7 +171,7 @@ function already_a_member($dbh, $signUpFname, $signUpLname, $organisationId) {
 
 // USERS
 function get_user_full($dbh, $userId) {
-	$STM = $dbh->prepare("SELECT users.user_name as user_name, users.email as email, 
+	$STM = $dbh->prepare("SELECT users.user_name as user_name, users.email as email, users.date_format as date_format, 
 		organisations.organisation_id as organisation_id, organisations.organisation_name as organisation_name, 
 		users.role_id as role_id, roles.role_name as role_name
 	 FROM users INNER JOIN organisations ON users.organisation_id = organisations.organisation_id
@@ -548,4 +548,75 @@ function hide_orphaned_things($dbh, $things, $attribute) {
 	$STM->execute();
 	$STM = null;
 }
+
+function set_date_format($dbh, $userId, $dateFormat) {
+	$sql = 'UPDATE users SET date_format = :date_format WHERE user_id = :user_id';
+	$STM = $dbh->prepare($sql);
+	$STM->bindParam(':date_format', $dateFormat);
+	$STM->bindParam(':user_id', $userId);	
+	$STM->execute();
+	$STM = null;
+}
+
+function get_date_format($dbh, $userId) {
+	$sql = 'SELECT date_format from user WHERE user_id = :user_id';
+	$STM = $dbh->prepare($sql);
+	$STM->bindParam(':user_id', $userId);	
+	$STM->execute();
+	$STMrecords = $STM->fetchAll();
+	$dateFormat = "Y-m-d";
+		if ($STMrecords) {
+	    foreach($STMrecords as $row) {
+	        $dateFormat = $row['date_format'];
+	    }
+	}
+	return $dateFormat;
+	$STM = null;
+}
+
+function get_update_messages($dbh, $userId) {
+	$sql = 'SELECT message FROM messages WHERE id NOT IN ( SELECT message_id FROM read_messages WHERE user_id = :user_id)';
+	$STM = $dbh->prepare($sql);
+	$STM->bindParam(':user_id', $userId); 
+	// For Executing prepared statement we will use below function
+	$STM->execute();
+	// // fetch records like this and use foreach loop to show multiple Results
+	$STMrecords = $STM->fetchAll();
+	// then disconnect
+	$STM = null;
+	// populate array with fetched results.
+	$count = 0;
+	$things = false;
+	if ($STMrecords) {
+	    foreach($STMrecords as $row) {
+	        $things[$count] = $row['message'];
+	        $count = $count + 1;
+	    }
+	} 
+	return $things;
+}
+
+function purge_old_messages($dbh, $userId) {
+	$sql = 'INSERT INTO read_messages (message_id, user_id) SELECT messages.id, :user_id FROM messages WHERE ';
+	$sql .= 'messages.id NOT IN ( SELECT message_id FROM read_messages WHERE user_id = :user_id)';
+	$STM = $dbh->prepare($sql);
+	$STM->bindParam(':user_id', $userId);	
+	$STM->execute();
+	$STM = null;
+	$sql = 'DELETE FROM messages WHERE creation_dts < DATE_SUB(UTC_TIMESTAMP(), INTERVAL 6 MONTH)';
+	$STM = $dbh->prepare($sql);
+	$STM->execute();
+	$STM = null;
+	
+}
+
+function add_message($dbh, $message, $message_uid){
+	$sql = 'INSERT INTO messages (message, message_uid, creation_dts) VALUES (:message, :message_uid, UTC_TIMESTAMP())';
+	$STM = $dbh->prepare($sql);
+	$STM->bindParam(':message', $message);
+	$STM->bindParam(':message_uid', $message_uid);	
+	$STM->execute();
+	$STM = null;
+}
+
 ?>

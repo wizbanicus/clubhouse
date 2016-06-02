@@ -8,11 +8,14 @@
 		</div>
 	</div>
 </div>
+<input name="date_format" value="
+<?php if ($_SESSION['date_format']) { echo $_SESSION['date_format']; }else { echo 'd/m/Y'; } ?> " type="hidden" id="date_format" >
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
-    <script src="js/clubhouse.js"></script>
+
     <script type="text/javascript" src="js/awesomplete.js"></script>
     <script type="text/javascript" src="js/moment.js"></script>
     <script type="text/javascript" src="js/daterangepicker.js"></script>
+    <script src="js/clubhouse.js"></script>

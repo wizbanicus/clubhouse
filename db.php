@@ -120,7 +120,8 @@
 	`user_name` varchar(255) NOT NULL,
 	`user_password` varchar(255) NOT NULL,
 	`venue_id` bigint(20) DEFAULT NULL,
-	`email` varchar(255) DEFAULT NULL
+	`email` varchar(255) DEFAULT NULL,
+	`date_format` varchar(255) DEFAULT NULL,
 	);");
 	$STM->execute();
 	$STM = null;
@@ -198,6 +199,22 @@
 		`timezone` varchar(255) DEFAULT NULL
 		)");
 	// For Executing prepared statement we will use below function
+	$STM->execute();
+	$STM = null;
+
+	$STM = $dbh->prepare("CREATE TABLE IF NOT EXISTS `messages` (
+	`id` serial,
+	`creation_dts` timestamp NULL DEFAULT NULL,
+	`message` varchar(255) DEFAULT NULL
+	);");
+	$STM->execute();
+	$STM = null;
+
+	$STM = $dbh->prepare("CREATE TABLE IF NOT EXISTS `read_messages` (
+	`id` serial,
+	`message_id` bigint(20),
+	`user_id` bigint(20)
+	);");
 	$STM->execute();
 	$STM = null;
 

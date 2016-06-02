@@ -1,6 +1,5 @@
 <?php
 include 'configPDO.php';
-include 'db.php';
 include 'data.php';
 include 'shared_functions.php';
 
@@ -68,5 +67,12 @@ session_start();
 	if ($_POST['do'] == 'reports') {
 		$_SESSION['mode'] = "reports";
 		header("Location: reports.php");
+	}
+	if ($_POST['do'] == 'set_date_format') {
+		$dateFormat = test_input($_POST['date_format']);
+		$dateFormat = strtolower($dateFormat);
+		set_date_format($dbh, $_SESSION['user_id'], $dateFormat);
+		$_SESSION['date_format'] = $dateFormat;
+		header("Location: admin.php");
 	}
 ?>

@@ -23,10 +23,10 @@ function test_input($data) {
   return $data;
 }
 
-function validate_date($date, $format = 'd/m/Y')
+function validate_date($date, $format = 'd/m/Y', $newFormat = 'd/m/Y')
 {
     $d = DateTime::createFromFormat($format, $date);
-    return $d && $d->format($format) == $date;
+    return $d && $d->format($newFormat) == $date;
 }
 
 function debug() {
