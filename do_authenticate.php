@@ -24,7 +24,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['username'] == 'admin' && $_P
 		$_SESSION['role'] = $user['role_name'];
 		$_SESSION['organisation_id'] = $user['organisation_id'];
 		$_SESSION['user_id'] = $loggedInUserId;
-		$_SESSION['date_format'] = get_date_format($dbh, $loggedInUserId);
 		clubhouse_updates($dbh, $_SESSION['user_id']);
 	}
 }
