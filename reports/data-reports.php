@@ -38,21 +38,52 @@ function new_members_by_venue($dbh, $reportStartDate, $reportEndDate, $reportVen
 	$STM = null;	
 }
 
-function get_member_info($dbh, $startAge, $endAge, $asOfDate){
+function get_member_info($dbh, $startAge, $endAge, $asOfDate, $orgID){
 error_log("start age: " . $startAge . " end age: " . $endAge . " as of: " . $asOfDate);  
 $STM = $dbh->prepare
 		("SELECT count(DISTINCT members.member_id)FROM `members` 
 		WHERE members.first_visit < :as_of_date
 		AND members.birthdate > DATE_SUB(:as_of_date, INTERVAL :end_age YEAR)
-		AND members.birthdate < DATE_SUB(:as_of_date, INTERVAL :start_age YEAR)");
+		AND members.birthdate < DATE_SUB(:as_of_date, INTERVAL :start_age YEAR)
+		AND organisation_id = :organisation_id");
 	$STM->bindParam(':as_of_date', $asOfDate);
 	$STM->bindParam(':start_age', $startAge);
 	$STM->bindParam(':end_age', $endAge);
+	$STM->bindParam(':organisation_id', $orgID);
 	$STM->execute();
 	$members = $STM->fetchColumn();
 	if (isset($members) && $members) {return $members;}
 	else {return 0;}
 	$STM = null;
+}
+
+function get_all_member_info($dbh, $startAge, $endAge, $asOfDate, $orgID){
+error_log("start age: " . $startAge . " end age: " . $endAge . " as of: " . $asOfDate);  
+$STM = $dbh->prepare
+		("SELECT * FROM `members` 
+		WHERE members.first_visit < :as_of_date
+		AND members.birthdate > DATE_SUB(:as_of_date, INTERVAL :end_age YEAR)
+		AND members.birthdate < DATE_SUB(:as_of_date, INTERVAL :start_age YEAR)
+		AND organisation_id = :organisation_id");
+	$STM->bindParam(':as_of_date', $asOfDate);
+	$STM->bindParam(':start_age', $startAge);
+	$STM->bindParam(':end_age', $endAge);
+	$STM->bindParam(':organisation_id', $orgID);
+	$STM->execute();
+	$members = $STM->fetchAll();
+	$STM = null;
+	$count = 0;
+//	$things = false;
+	if (isset($members) && $members) {
+	return $members;
+/*		if ($STMrecords) {
+			  foreach($STMrecords as $row) {
+			      $things[$count] = $row['message'];
+			      $count = $count + 1;
+			  }
+		}*/ 
+	} else { return false; };
+//	return $things
 }
 
 ?>

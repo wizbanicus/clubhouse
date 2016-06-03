@@ -55,6 +55,6 @@ include 'reports-logic.php';
 	</div>
 	<?php if (isset($message) && $message) { include 'view_message.php'; } ?>
 	<?php include 'view_footer.php' ?>    
-	<script type="text/javascript" src="js/reports.js"></script>          
+	<script type="text/javascript" src="js/reports.js"></script>         
 </body>
 </html>
