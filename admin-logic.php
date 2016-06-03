@@ -11,7 +11,6 @@ if (isset($_SESSION['user']) && $_SESSION['role'] == "staff") {
 //	$signedInMembers = get_signed_in_members($dbh, $_SESSION['venue_id']);
 	$defaultVenue = get_users_default_venue($dbh, $_SESSION['user_id']);
 	$userFull = get_user_full($dbh, $_SESSION['user_id']);
-	$userDateFormat = $userFull['date_format'];
 	$timezones = timezone_identifiers_list();
 }
 if (isset($_SESSION['user']) && $_SESSION['role'] == "admin") {

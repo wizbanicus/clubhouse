@@ -171,7 +171,7 @@ function already_a_member($dbh, $signUpFname, $signUpLname, $organisationId) {
 
 // USERS
 function get_user_full($dbh, $userId) {
-	$STM = $dbh->prepare("SELECT users.user_name as user_name, users.email as email, users.date_format as date_format, 
+	$STM = $dbh->prepare("SELECT users.user_name as user_name, users.email as email, 
 		organisations.organisation_id as organisation_id, organisations.organisation_name as organisation_name, 
 		users.role_id as role_id, roles.role_name as role_name
 	 FROM users INNER JOIN organisations ON users.organisation_id = organisations.organisation_id
@@ -558,6 +558,7 @@ function set_date_format($dbh, $userId, $dateFormat) {
 	$STM = null;
 }
 
+/* later
 function get_date_format($dbh, $userId) {
 	$sql = 'SELECT date_format from user WHERE user_id = :user_id';
 	$STM = $dbh->prepare($sql);
@@ -573,6 +574,7 @@ function get_date_format($dbh, $userId) {
 	return $dateFormat;
 	$STM = null;
 }
+*/
 
 function get_update_messages($dbh, $userId) {
 	$sql = 'SELECT message FROM messages WHERE id NOT IN ( SELECT message_id FROM read_messages WHERE user_id = :user_id)';
