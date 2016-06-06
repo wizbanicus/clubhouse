@@ -6,9 +6,9 @@ $newMembers = new_members_by_venue($dbh, $currentStartDate, $currentEndDate, $cu
 <div class="col-lg-12">
 <h3>General attendance - <?php echo $currentVenue['name']; ?>
 	<small>  (  
-		<?php echo new_date_string($reportStartDate, 'UTC', $arriving_format = 'd/m/Y H:i:s', $desired_format='Y-m-d') ; ?> 
+		<?php echo new_date_string($reportStartDate, 'UTC', $GLOBALS['REPORT_ARRIVING_FMT'], $desired_format='Y-m-d') ; ?> 
 		  to  
-		<?php echo new_date_string($reportEndDate, 'UTC', $arriving_format = 'd/m/Y H:i:s', $desired_format='Y-m-d') ; ?> )   
+		<?php echo new_date_string($reportEndDate, 'UTC', $GLOBALS['REPORT_ARRIVING_FMT'], $desired_format='Y-m-d') ; ?> )   
 	</small> 
 </h3> 
 </div>

@@ -1,4 +1,5 @@
 <?php
+include 'global_vars.php';
 $host = 'localhost';
 // mysql hostname
 $hostname = 'localhost';

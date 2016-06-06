@@ -1,9 +1,10 @@
 $(function() {
+var DATE_FORMAT = document.getElementById("JS_DATE_FMT").value;
   $('input[name="birthdate"]').daterangepicker({
       singleDatePicker: true,
       showDropdowns: true,
       "locale": {
-        "format": "DD/MM/YYYY",
+        "format": DATE_FORMAT,
         "separator": " - ",
         "applyLabel": "Apply",
         "cancelLabel": "Cancel",

@@ -1,4 +1,5 @@
 <?php
+include 'global_vars.php';
 // shared functions
 date_default_timezone_set('UTC');
 $timezones = timezone_identifiers_list();
@@ -23,8 +24,9 @@ function test_input($data) {
   return $data;
 }
 
-function validate_date($date, $format = 'd/m/Y', $newFormat = 'd/m/Y')
-{
+function validate_date($date, $format = null, $newFormat = null)
+{		if ($format == null) { $format = $GLOBALS['VLDT_DATE_DEFAULT']; }
+		if ($newFormat == null) { $newFormat = $GLOBALS['VLDT_DATE_DEFAULT']; }
     $d = DateTime::createFromFormat($format, $date);
     return $d && $d->format($newFormat) == $date;
 }
@@ -35,7 +37,9 @@ function debug() {
 
 }
 
-function new_date_string($date_string, $desired_tz_str, $arriving_format = 'Y-m-d H:i:s', $desired_format='Y-m-d H:i', $arriving_tz_str = 'UTC') {
+function new_date_string($date_string, $desired_tz_str, $arriving_format = null, $desired_format=null, $arriving_tz_str = 'UTC') {
+	if ($arriving_format == null) { $arriving_format = $GLOBALS['STR_ARRIVING_FMT']; }
+	if ($desired_format == null) { $desired_format = $GLOBALS['STR_DESIRED_FMT']; }
 	// NOTE: takes a date string and a timezone string and a format and returns a new date string in the desired format
 	// IMPORTANT: The date string musta rrive in the format 
 	// date_create_from_format creates a datetime object

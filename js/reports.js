@@ -1,7 +1,9 @@
+
 $(function() {
+var DATE_FORMAT = document.getElementById("JS_DATE_FMT").value;
   $('input[name="daterange"]').daterangepicker({
       "locale": {
-        "format": "DD/MM/YYYY",
+        "format": DATE_FORMAT,
         "separator": " - ",
         "applyLabel": "Apply",
         "cancelLabel": "Cancel",
@@ -38,11 +40,12 @@ $(function() {
 });
 
 $(function() {
+var DATE_FORMAT = document.getElementById("JS_DATE_FMT").value;
       $('input[name="as_of_date"]').daterangepicker({
       singleDatePicker: true,
       showDropdowns: true,
       "locale": {
-        "format": "DD/MM/YYYY",
+        "format": DATE_FORMAT,
         "separator": " - ",
         "applyLabel": "Apply",
         "cancelLabel": "Cancel",

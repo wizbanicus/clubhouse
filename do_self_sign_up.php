@@ -27,8 +27,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		if (isset($_POST['birthdate']) && $_POST['birthdate'] && validate_date($_POST['birthdate'])) {
 			$signUpBirthdate = $_POST['birthdate'];
 		}
-		else {
+		else { 
 			$birthdateErr = " Error with birthdate. ";
+			$birthdateErr .= "posted: " . $_POST['birthdate'] . " ... validated : " . validate_date($_POST['birthdate']);
 			$message .= $birthdateErr;
 			$signUpOk = false;
 		}

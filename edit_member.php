@@ -43,7 +43,7 @@ include 'edit_member-logic.php';
                   <option value="other"<?php if($memberFull['gender'] == 'other') { echo " selected";} ?>>other</option>
                 </select>
               </label>
-              <input type="text" class="form-control" name="birthdate" value="<?php if($memberFull['birthdate']) {echo date("d/m/Y", strtotime($memberFull['birthdate']));}?>" >
+              <input type="text" class="form-control" name="birthdate" value="<?php if($memberFull['birthdate']) {echo date($GLOBALS['VLDT_DATE_DEFAULT'], strtotime($memberFull['birthdate']));}?>" >
               <input class="form-control" name="card_no" value="<?php if($memberFull['card_no']) {echo $memberFull['card_no'];}?>" placeholder="card number">
               <input class="form-control" name="comments" value="<?php if($memberFull['comments']) {echo $memberFull['comments'];}?>" placeholder="comments">
               <input class="form-control <?php if (isset($schools) && $schools) { echo "awesomplete"; } ?> " 

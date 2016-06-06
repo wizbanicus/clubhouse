@@ -1,4 +1,5 @@
 <?php
+include 'global_vars.php';
 // MEMBERS
 function get_members($dbh, $organisationId) {
 	// Prepare query for showing requested results.
@@ -129,7 +130,7 @@ function already_signed_in($dbh, $memberId) {
 
 function add_unconfirmed_member($dbh, $signUpFname, $signUpLname, $signUpGenderId, $signUpBirthdate, $organisationId) {
 	$STM = $dbh->prepare("INSERT INTO members ( fname, lname, full_name, gender_id, birthdate, organisation_id, first_visit ) 
-		VALUES ( :fname, :lname, :full_name, :gender_id, STR_TO_DATE(:birthdate, '%d/%m/%Y'), :organisation_id, CURDATE() )");
+		VALUES ( :fname, :lname, :full_name, :gender_id, STR_TO_DATE(:birthdate, :db_date ), :organisation_id, CURDATE() )");
 	$fullName = $signUpFname . ' ' . $signUpLname;
 	$STM->bindParam(':fname', $signUpFname); 
 	$STM->bindParam(':lname', $signUpLname);
@@ -137,6 +138,7 @@ function add_unconfirmed_member($dbh, $signUpFname, $signUpLname, $signUpGenderI
 	$STM->bindParam(':gender_id', $signUpGenderId);  
 	$STM->bindParam(':birthdate', $signUpBirthdate); 
 	$STM->bindParam(':organisation_id', $organisationId); 
+	$STM->bindParam(':db_date', $GLOBALS['DB_DATE_FMT']); 
 	$STM->execute();
 	$STM = null;
 }
@@ -150,9 +152,10 @@ function update_member($dbh, $memberId, $attribute, $value) {
 	$STM = null;
 }
 function update_member_birthdate($dbh, $memberId, $birthdate) {
-	$STM = $dbh->prepare("UPDATE members SET birthdate = STR_TO_DATE(:birthdate, '%d/%m/%Y') WHERE member_id = :member_id");
+	$STM = $dbh->prepare("UPDATE members SET birthdate = STR_TO_DATE(:birthdate, :db_date) WHERE member_id = :member_id");
 	$STM->bindParam(':member_id', $memberId); 
 	$STM->bindParam(':birthdate', $birthdate); 
+	$STM->bindParam(':db_date', $GLOBALS['DB_DATE_FMT']); 
 	$STM->execute();
 	$STM = null;
 }

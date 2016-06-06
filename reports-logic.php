@@ -6,8 +6,8 @@ if (isset($_COOKIE['message']) && $_COOKIE['message']) {
 }
 if ($_SESSION['role'] == 'staff' && $_SESSION['mode'] == 'reports') {
 	$m = date('n');
-	$lastMonthStart = date('d/m/Y',mktime(1,1,1,$m-1,1,date('Y')));
-	$lastMonthEnd = date('d/m/Y',mktime(1,1,1,$m,0,date('Y'))); 
+	$lastMonthStart = date($GLOBALS['VLDT_DATE_DEFAULT'],mktime(1,1,1,$m-1,1,date('Y')));
+	$lastMonthEnd = date($GLOBALS['VLDT_DATE_DEFAULT'],mktime(1,1,1,$m,0,date('Y'))); 
 	$venues = get_venues($dbh, $_SESSION['organisation_id']);
 // report types are listed here - for each report type there must be a 
 // corresponding view file in reports folder eg. "reports/general-attendance.php"
