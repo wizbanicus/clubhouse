@@ -14,8 +14,8 @@ if (isset($messages) && $messages) {
 purge_old_messages($dbh, $userId);
 // next each update called as its own function with a unique number
 // new ones should be added at the top!
-added_to_reports($dbh,"9");
 add_message_uid($dbh,"8");
+added_to_reports($dbh,"9");
 }
 
 
@@ -36,7 +36,7 @@ function add_date_formats($dbh,$uid){
 */
 
 function add_message_uid($dbh,$uid){
-		$STM = $dbh->prepare("ALTER TABLE `messages` ADD message_uid bigint(20) UNIQUE");
+		$STM = $dbh->prepare("ALTER TABLE `messages` ADD IF NOT EXISTS message_uid  bigint(20) UNIQUE");
 	// For Executing prepared statement we will use below function
 	$STM->execute();
 	$STM = null;

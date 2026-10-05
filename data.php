@@ -49,7 +49,7 @@ function sign_in($dbh, $memberId, $venueId, $organisationId) {
 	$STM = null;
 }
 
-function sign_out($dbh, $memberId, $autoSignedOut=false) {
+function sign_out($dbh, $memberId, $autoSignedOut=0) {
 	// cerate attendance record then delete attendance
 	$STM = $dbh->prepare("INSERT INTO attendance_records (member_id, sign_in_time, sign_out_time, venue_id, organisation_id, auto_signed_out )
 	 SELECT member_id, sign_in_time, UTC_TIMESTAMP(), venue_id, organisation_id, :auto_signed_out  
@@ -67,7 +67,7 @@ function sign_out($dbh, $memberId, $autoSignedOut=false) {
 }
 
 function purge_orphaned_attendance($dbh) {
-	$STM = $dbh->prepare("DELETE FROM attendance WHERE member_id NOT IN (SELECT member_id FROM members)");                   
+	$STM = $dbh->prepare("DELETE FROM attendance WHERE :member_id NOT IN (SELECT member_id FROM members)");                   
     $STM->bindParam(':member_id', $memberId);
 	$STM->execute();
 	$STM = null;
@@ -144,7 +144,7 @@ function add_unconfirmed_member($dbh, $signUpFname, $signUpLname, $signUpGenderI
 }
 
 function update_member($dbh, $memberId, $attribute, $value) {
-	$sql = 'UPDATE members SET ' . $attribute . ' = :value WHERE member_id = :member_id';
+	$sql = 'UPDATE members INGORE SET ' . $attribute . ' = :value WHERE member_id = :member_id';
 	$STM = $dbh->prepare($sql);
 	$STM->bindParam(':member_id', $memberId); 
 	$STM->bindParam(':value', $value);  
@@ -602,7 +602,7 @@ function get_update_messages($dbh, $userId) {
 }
 
 function purge_old_messages($dbh, $userId) {
-	$sql = 'INSERT INTO read_messages (message_id, user_id) SELECT messages.id, :user_id FROM messages WHERE ';
+	$sql = 'INSERT IGNORE INTO read_messages (message_id, user_id) SELECT messages.id, :user_id FROM messages WHERE ';
 	$sql .= 'messages.id NOT IN ( SELECT message_id FROM read_messages WHERE user_id = :user_id)';
 	$STM = $dbh->prepare($sql);
 	$STM->bindParam(':user_id', $userId);	
@@ -616,7 +616,7 @@ function purge_old_messages($dbh, $userId) {
 }
 
 function add_message($dbh, $message, $message_uid){
-	$sql = 'INSERT INTO messages (message, message_uid, creation_dts) VALUES (:message, :message_uid, UTC_TIMESTAMP())';
+	$sql = 'INSERT IGNORE INTO messages (message, message_uid, creation_dts) VALUES (:message, :message_uid, UTC_TIMESTAMP())';
 	$STM = $dbh->prepare($sql);
 	$STM->bindParam(':message', $message);
 	$STM->bindParam(':message_uid', $message_uid);	

@@ -1,5 +1,5 @@
 <?php
-
+include 'configPDO.php';
 	// ensure tables exists!
 	// ensure member table exists!
 	$STM = $dbh->prepare("CREATE TABLE IF NOT EXISTS `members` (
@@ -121,7 +121,7 @@
 	`user_password` varchar(255) NOT NULL,
 	`venue_id` bigint(20) DEFAULT NULL,
 	`email` varchar(255) DEFAULT NULL,
-	`date_format` varchar(255) DEFAULT NULL,
+	`date_format` varchar(255) DEFAULT NULL
 	);");
 	$STM->execute();
 	$STM = null;
